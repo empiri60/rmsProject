@@ -1,0 +1,26 @@
+{
+  "name": "rms",
+  "version": "1.0.0",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/empiri60/rms.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/empiri60/rms/issues"
+  },
+  "homepage": "https://github.com/empiri60/rms#readme",
+  "description": "",
+
+"devDependencies": {
+  "@faker-js/faker": "^7.1.0",
+  "cypress": "14.2.1"
+}
+
+}
