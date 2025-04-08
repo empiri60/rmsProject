@@ -1,6 +1,6 @@
 class Login {
     navigateToLogin() {
-        cy.get('#login2').click()
+        cy.get('[data-target="#logInModal"]').click()
     }
     enterUsername(username) {
         cy.get('#loginusername').clear().type(username, { delay: 100, force: true }).should('have.value', username)

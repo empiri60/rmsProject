@@ -7,6 +7,8 @@ module.exports = defineConfig({
     video: true,
     screenshotOnRunFailure: true, 
     supportFile: "cypress/support/e2e.js",
+    viewportWidth: 1920,
+    viewportHeight: 1080,
     
     setupNodeEvents(on, config) { 
     },
