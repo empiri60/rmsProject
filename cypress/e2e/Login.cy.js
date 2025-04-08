@@ -37,6 +37,30 @@ describe('Login Tests', () => {
     });
   });
 
+  it('should display error for leave empty email credentials', ()=> {
+    const {password } = Cypress.env('loginData').validUser;
+    const {emptyPasswordError} = Cypress.env('loginData').invalidUser;
+    Login.navigateToLogin();
+    Login.enterPassword(password);
+    Login.submitLogin();
+    cy.on('window:alert', (text) => {
+      expect(text).to.equal(emptyPasswordError);
+    });
+  });
+
+  it('should display error for levae Empty password', ()=> {
+    const { username } = Cypress.env('loginData').validUser;
+    const {emptyPasswordError} = Cypress.env('loginData').invalidUser;
+    Login.navigateToLogin();
+    Login.enterUsername(username);
+    Login.submitLogin();
+    cy.on('window:alert', (text) => {
+      expect(text).to.equal(emptyPasswordError);
+    });
+  });
+
+  
+
   })
 
 
