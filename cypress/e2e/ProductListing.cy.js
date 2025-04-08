@@ -35,7 +35,7 @@ describe("Cart Operations Suite", () => {
 
     describe('Order Placement', () => {
 
-        it.only("should complete order placement successfully", () => {
+        it("should complete order placement successfully", () => {
             const { username, password, welcomeMessage } = Cypress.env('loginData').validUser;
             LoginPage.navigateToLogin()
             LoginPage.enterUsername(username)
