@@ -15,7 +15,8 @@
   "invalidUser": {
     "username": "wrong@example.com",
     "password": "wrongpass",
-    "errorMessage": "Wrong password."
+    "errorMessage": "Wrong password.",
+    "emptyPasswordError":"Please fill out Username and Password."
   },
   "validAccount": {
     "password": "abcd3@@123",
