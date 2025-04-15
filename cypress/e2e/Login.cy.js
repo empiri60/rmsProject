@@ -59,6 +59,16 @@ describe('Login Tests', () => {
     });
   });
 
+  it.only('Should contact form successfully submited',()=>{
+
+    const {emptyPasswordError} = Cypress.env('loginData').invalidUser;
+    Login.clickonNavbar()
+    Login.contactEmail()
+    cy.on('window:alert', (text) => {
+      expect(text).to.equal(emptyPasswordError);
+    });
+  })
+
   
 
   })

@@ -13,23 +13,23 @@ class BooksApiClient {
     }
   
     createOrder(bookId, customerName) {
-      return this._request('POST', '/orders', { bookId, customerName });
+      return this.request('POST', '/orders', { bookId, customerName });
     }
   
     getOrder(orderId) {
-      return this._request('GET', `/orders/${orderId}`);
+      return this.request('GET', `/orders/${orderId}`);
     }
   
     updateOrder(orderId, updates) {
-      return this._request('PATCH', `/orders/${orderId}`, updates);
+      return this.request('PATCH', `/orders/${orderId}`, updates);
     }
   
     deleteOrder(orderId) {
-      return this._request('DELETE', `/orders/${orderId}`);
+      return this.request('DELETE', `/orders/${orderId}`);
     }
   
     getAllOrders() {
-      return this._request('GET', '/orders');
+      return this.request('GET', '/orders');
     }
 
     getBooks() {
@@ -44,7 +44,7 @@ class BooksApiClient {
       return cy.request(`${this.baseUrl}/status`);
     }
 
-    _request(method, endpoint, body = null) {
+    request(method, endpoint, body = null) {
       return cy.request({
         method,
         url: `${this.baseUrl}${endpoint}`,

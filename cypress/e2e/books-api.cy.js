@@ -12,7 +12,12 @@ describe('Books API Tests with Object Model', () => {
         .then((response) => {
           BooksApiClient.authToken = response.body.accessToken;
         });
+        BooksApiClient.getBookDetails(1).then((response) =>{
+          expect(response.body.available).to.eq(true);
+        })
     });
+
+   
   
     beforeEach(() => {
       BooksApiClient.createOrder(1, 'John Doe')
@@ -26,6 +31,35 @@ describe('Books API Tests with Object Model', () => {
         BooksApiClient.deleteOrder(orderId);
       }
     });
+
+    it('Book ID',()=>{
+      BooksApiClient.getBookDetails(1).then((response) =>{
+        expect(response.body.available).to.eq(true);
+        if (response.body.available) {
+          // Step 2: Create order if book is available
+          BooksApiClient.createOrder(1).then((orderResponse) => {
+            expect(orderResponse.status).to.eq(201); // or 200 depending on your API
+            expect(orderResponse.body).to.have.property('orderId');
+            cy.log('Order created successfully:', orderResponse.body.orderId);
+          });
+       
+        }
+      })
+      
+    })
+    
+
+    it.only('should verify API status', () => {   
+      let bookId = null    
+      BooksApiClient.getBookDetails(1).then((getResponse) => {       
+        expect(getResponse.body['available']).to.eq(true);       
+        bookId = getResponse.body['id']       
+        BooksApiClient.createOrder(bookId, 'John Doe').then((response) => {            
+          expect(response.status).to.eq(201);       
+         });  
+         });   
+         
+        });
   
     describe('Basic API Checks', () => {
       it('should verify API status', () => {
@@ -81,3 +115,4 @@ describe('Books API Tests with Object Model', () => {
       });
     });
   });
+  

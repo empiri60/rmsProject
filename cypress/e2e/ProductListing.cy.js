@@ -1,4 +1,4 @@
-import ProductListing from "../pageObjects/products/ProductListing.page";
+
 import ShoppingCart from "../pageObjects/cart/Shopping.Cart.page";
 import Checkout from "../pageObjects/cart/Checkout.page";
 import LoginPage from "../pageObjects/auth/Login.page";
@@ -15,18 +15,20 @@ describe("Cart Operations Suite", () => {
 
         it("should add products and verify items in cart", () => {
             cy.AddProductToShoppingCart();
-            ShoppingCart.navigate();
-            ShoppingCart.verifyItemsCount();
+            cy.NavigateToShoppingCart()
+            cy.VerifyItemsCount()
+            
+           
         });
         it("should calculate correct total amount", () => {
             cy.AddProductToShoppingCart();
-            ShoppingCart.navigate();
-            ShoppingCart.verifyItemsCount();
+            cy.NavigateToShoppingCart()
+            cy.VerifyItemsCount()
             ShoppingCart.verifyCartTotal();
         });
         it("should update total after deleting an item", () => {
             cy.AddProductToShoppingCart();
-            ShoppingCart.navigate();
+            cy.NavigateToShoppingCart()
             ShoppingCart.removeItem(0);
             cy.wait(2000);
             ShoppingCart.verifyCartTotal();
@@ -43,7 +45,7 @@ describe("Cart Operations Suite", () => {
             LoginPage.submitLogin()
             LoginPage.verifySuccessfulLogin(welcomeMessage)
             cy.AddProductToShoppingCart();
-            ShoppingCart.navigate();
+            cy.NavigateToShoppingCart()
             Checkout.completeCheckout();
             Checkout.verifyOrderConfirmation();
             cy.reload()
