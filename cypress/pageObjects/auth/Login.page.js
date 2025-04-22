@@ -3,11 +3,11 @@ class Login {
         cy.get('[data-target="#logInModal"]').click()
     }
     enterUsername(username) {
-        cy.get('#recipient-email').clear().type(username, { delay: 100, force: true }).should('have.value', username)
+        cy.get('#loginusername').type(username, { delay: 100, force: true }).should('have.value', username)
     }
 
     enterPassword(password) {
-        cy.get('#loginpassword').clear().type(password, { delay: 100, force: true })
+        cy.get('#loginpassword').type(password, { delay: 100, force: true })
     }
     submitLogin() {
         cy.contains('button', 'Log in').click();

@@ -16,7 +16,7 @@
     "username": "wrong@example.com",
     "password": "wrongpass",
     "errorMessage": "Wrong password.",
-    "emptyPasswordError":"Thanks for the message!!"
+    "emptyInputFieldError":"Please fill out Username and Password."
   },
   "validAccount": {
     "password": "abcd3@@123",
@@ -29,5 +29,9 @@
   },
   "missingFields": {
     "errorMessage": "Please fill out Username and Password."
+  },
+  "ContactSuccessfullMessage":{
+    "SuccessMessage":"Thanks for the message!!"
+
   }
 }
